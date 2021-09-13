@@ -3,6 +3,13 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3000;
 require("dotenv").config(".env");
+const mongoose = require("mongoose");
+const Poll = require("./models/Poll");
+
+mongoose.connect(
+  `mongodb+srv://admin:${process.env.DB_PASSWORD}@letsvote.wd3wu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+  { useNewUrlParser: true }
+);
 
 //-----MIDDLEWARE---------
 app.use(express.json());
@@ -11,12 +18,18 @@ app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 // create a poll
 app.post("/api/poll", (req, res) => {
-  res.send("hey");
+  const pollData = req.body;
+  //   console.log(typeof pollData.createdAt.expires.value);
+  const pollEntry = new Poll(pollData);
+  pollEntry.save();
+  res.send(pollData);
 });
 
-app.get("/api/poll/:id", (req, res) => {
+// get poll by id
+app.get("/api/poll/:id", async (req, res) => {
   const id = req.params.id;
-  res.send(id);
+  const pollData = await Poll.findOne({ _id: id });
+  res.send(pollData);
 });
 
 app.listen(PORT, () => {

@@ -1,22 +1,22 @@
 const mongoose = require("mongoose");
-import uniqid from "uniqid";
+const uniqid = require("uniqid");
 
 const PollSchema = new mongoose.Schema({
-  id: {
+  _id: {
     type: String,
     default: function genUniqId() {
       return uniqid();
     },
   },
   name: String,
-  choices: [{ name: String, score: { type: Number, default: 0 } }],
-  createdAt: { type: Date, expires: 60 },
+  choices: [{ value: String, score: { type: Number, default: 0 } }],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  expireAfterSeconds: Number,
 });
 
 const Poll = mongoose.model("Poll", PollSchema);
 
 module.exports = Poll;
-
-//43200 - 1 day
-//302400 - 1 week
-//3600 - 1 hour
