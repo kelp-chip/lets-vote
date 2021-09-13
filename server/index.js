@@ -9,6 +9,16 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
+// create a poll
+app.post("/api/poll", (req, res) => {
+  res.send("hey");
+});
+
+app.get("/api/poll/:id", (req, res) => {
+  const id = req.params.id;
+  res.send(id);
+});
+
 app.listen(PORT, () => {
   console.log(`Server now listening on http://localhost:${PORT}`);
 });
