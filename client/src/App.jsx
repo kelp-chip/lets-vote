@@ -5,7 +5,7 @@ import "./style.scss";
 import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/index.jsx";
 import CreatePoll from "./pages/CreatePoll/index.jsx";
-import Poll from "./pages/Poll.jsx";
+import Poll from "./pages/Poll/index.jsx";
 
 function App() {
   return (

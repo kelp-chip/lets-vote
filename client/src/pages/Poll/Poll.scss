@@ -1,0 +1,33 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.rowContainer {
+  display: flex;
+  border: solid 1px rgb(195, 195, 195);
+
+  .listNumber {
+    background-color: rgb(175, 175, 175);
+    padding: 20px 25px;
+    font-size: larger;
+    box-sizing: border-box;
+    border-bottom: rgb(228, 228, 228) solid 1px;
+  }
+}
+
+.draggable {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(231, 231, 231);
+  width: 100%;
+  padding: 10px;
+  border-bottom: rgb(228, 228, 228) solid 1px;
+}
+
+.noVote {
+  height: 200px;
+  background-color: rgb(190, 190, 190);
+  border: solid 1px rgb(167, 167, 167);
+}

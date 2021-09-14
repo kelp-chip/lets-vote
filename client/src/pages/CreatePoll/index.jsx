@@ -44,7 +44,7 @@ function CreatePoll() {
   };
 
   const choiceInputList = choices.map((choice, i) => (
-    <Grid item xs={12} sm={12}>
+    <Grid item xs={12} sm={12} key={i}>
       <TextField
         fullWidth
         type="text"
