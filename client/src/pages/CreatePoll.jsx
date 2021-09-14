@@ -66,7 +66,7 @@ function CreatePoll() {
         />
         <h3>options</h3>
         {choiceInputList}
-        <select
+        {/* <select
           value={expiryTime}
           onChange={(e) => {
             setExpiryTime(e.target.value);
@@ -77,7 +77,7 @@ function CreatePoll() {
           <option value="3600">1 hour</option>
           <option value="43200">1 day</option>
           <option value="302400">1 week</option>
-        </select>
+        </select> */}
         <input type="submit"></input>
       </form>
     </div>
