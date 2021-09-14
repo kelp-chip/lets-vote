@@ -1,4 +1,4 @@
-# lets-vote
+# Let's Vote
 
 ## What is it?
 
