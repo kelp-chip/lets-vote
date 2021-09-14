@@ -16,6 +16,11 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
+//enables react router
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/../client/public/index.html"));
+});
+
 // create a poll
 app.post("/api/poll", (req, res) => {
   const pollData = req.body;

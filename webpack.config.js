@@ -1,4 +1,5 @@
 const path = require("path");
+
 module.exports = {
   entry: "./client/src/index.js",
   mode: "development",
@@ -6,6 +7,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "./client/public"), //this is the folder you want to save your bundle in
   },
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -19,29 +21,34 @@ module.exports = {
           },
         },
       },
-      // {
-      //   test: /\.js$/,
-      //   enforce: "pre",
-      //   use: ["source-map-loader"],
-      // },
       {
-        test: /\.css$/,
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
+      {
+        test: /\.html$/,
+        use: {
+          loader: "html-loader",
+        },
+      },
+      {
+        test: /\.scss$/,
         use: [
-          "style-loader",
+          {
+            loader: "style-loader", // creates style nodes from JS strings
+          },
           {
             loader: "css-loader",
             options: {
-              importLoaders: 1,
               modules: true,
+              sourceMap: true,
             },
           },
+          {
+            loader: "sass-loader", // compiles Sass to CSS
+          },
         ],
-        include: /\.module\.css$/,
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-        exclude: /\.module\.css$/,
       },
     ],
   },
