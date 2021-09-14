@@ -21,7 +21,7 @@ app.post("/api/poll", (req, res) => {
   const pollData = req.body;
   const pollEntry = new Poll(pollData);
   pollEntry.save();
-  res.send(pollData);
+  res.send(pollEntry);
 });
 
 // get poll by id

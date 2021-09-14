@@ -5,7 +5,7 @@ import { useParams, withRouter } from "react-router-dom";
 
 function Poll() {
   const { id } = useParams();
-  const [pollExists, setPollExists] = useState(false);
+  const [pollExists, setPollExists] = useState(true);
   const [name, setName] = useState("");
   const [options, setOptions] = useState([]);
 
@@ -16,6 +16,8 @@ function Poll() {
       await setPollExists(true);
       await setName(name);
       await setOptions(choices);
+    } else {
+      await setPollExists(false);
     }
   };
   useEffect(() => {
@@ -34,7 +36,7 @@ function Poll() {
       </div>
     );
   } else {
-    return <div>no poll</div>;
+    return <div>sorry, no such poll exists</div>;
   }
 }
 

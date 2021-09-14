@@ -12,9 +12,8 @@ const PollSchema = new mongoose.Schema({
   choices: [{ value: String, score: { type: Number, default: 0 } }],
   createdAt: {
     type: Date,
-    default: Date.now(),
+    expires: 3600,
   },
-  expireAfterSeconds: Number,
 });
 
 const Poll = mongoose.model("Poll", PollSchema);

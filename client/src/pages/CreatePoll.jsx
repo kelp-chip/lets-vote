@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "regenerator-runtime/runtime";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 
 function CreatePoll() {
   const [name, setName] = useState("");
@@ -11,16 +11,25 @@ function CreatePoll() {
     { value: "" },
     { value: "" },
   ]);
+  const history = useHistory();
+
+  const removeBlankChoices = () => {
+    let choicesArr = [...choices];
+    const list = choicesArr.filter((choice) => choice.value !== "");
+    return list;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let choices = removeBlankChoices();
     const expireAfterSeconds = Number(expiryTime);
     const res = await axios.post("/api/poll", {
       name,
       choices,
-      expireAfterSeconds,
+      //   expireAfterSeconds,
     });
-    console.log(res.data);
+    const { _id } = res.data;
+    history.push(`/poll/${_id}`);
   };
 
   const handleInputChange = async (index, e) => {
