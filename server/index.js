@@ -16,15 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
-//enables react router
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../client/public/index.html"));
-});
-
 // create a poll
 app.post("/api/poll", (req, res) => {
   const pollData = req.body;
-  //   console.log(typeof pollData.createdAt.expires.value);
   const pollEntry = new Poll(pollData);
   pollEntry.save();
   res.send(pollData);
@@ -34,7 +28,12 @@ app.post("/api/poll", (req, res) => {
 app.get("/api/poll/:id", async (req, res) => {
   const id = req.params.id;
   const pollData = await Poll.findOne({ _id: id });
+  console.log(pollData);
   res.send(pollData);
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/../client/public/index.html"));
 });
 
 app.listen(PORT, () => {
