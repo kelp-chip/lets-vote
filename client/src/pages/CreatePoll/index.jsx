@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "regenerator-runtime/runtime";
 import axios from "axios";
-import { withRouter, useHistory } from "react-router-dom";
+import { withRouter, useHistory, Link } from "react-router-dom";
 import { TextField, Grid, Button } from "@material-ui/core";
 import style from "./CreatePoll.scss";
 
@@ -59,9 +59,6 @@ function CreatePoll() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {/* <label htmlFor="name">
-          <h3>name</h3>
-        </label> */}
         <div className={style.wrapper}>
           <TextField
             fullWidth
@@ -79,22 +76,19 @@ function CreatePoll() {
             {choiceInputList}
           </Grid>
         </div>
-        {/* <select
-          value={expiryTime}
-          onChange={(e) => {
-            setExpiryTime(e.target.value);
-          }}
-        >
-          <option value="60">1 minutes</option>
-          <option value="600">10 minutes</option>
-          <option value="3600">1 hour</option>
-          <option value="43200">1 day</option>
-          <option value="302400">1 week</option>
-        </select> */}
         <Button type="submit" fullWidth variant="contained" color="primary">
           Submit
         </Button>
       </form>
+      <Button
+        fullWidth
+        variant="outlined"
+        color="primary"
+        component={Link}
+        to="/"
+      >
+        Cancel
+      </Button>
     </div>
   );
 }

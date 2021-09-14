@@ -39,9 +39,17 @@ function Poll() {
   if (pollExists) {
     return (
       <div>
-        <h1>{name}</h1>
-        <ul onDragOver={(e) => onDragOver(e)}>
-          {options.map((choice, i) => (
+        <h2>{name}</h2>
+        <div className={style.sortedContainer}>
+          {/* <div>
+            <ul className={}>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+            </ul>
+          </div> */}
+          <ul onDragOver={(e) => onDragOver(e)}>
+            {/* {[{ value: "" }, { value: "" }, { value: "" }].map((choice, i) => (
             <li key={i} data-index={i} className={style.rowContainer}>
               <div className={style.listNumber}>{i + 1}</div>
               <div draggable className={style.draggable}>
@@ -52,9 +60,22 @@ function Poll() {
                 />
               </div>
             </li>
+          ))} */}
+          </ul>
+        </div>
+        <ul onDragOver={(e) => onDragOver(e)} className={style.noVote}>
+          {options.map((choice, i) => (
+            <li key={i} data-index={i} className={style.rowContainer}>
+              <div draggable className={style.draggable}>
+                {choice.value}
+                <DragHandleRounded
+                  fontSize="inherit"
+                  className={style.handle}
+                />
+              </div>
+            </li>
           ))}
         </ul>
-        <ul onDragOver={(e) => onDragOver(e)} className={style.noVote}></ul>
       </div>
     );
   } else {

@@ -3,8 +3,8 @@ import "regenerator-runtime/runtime";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import styles from "./home.scss";
-import { Button } from "@material-ui/core";
+import style from "./home.scss";
+import { Button, TextField, Tooltip } from "@material-ui/core";
 
 function Home() {
   const [pollId, setPollId] = useState("");
@@ -24,30 +24,39 @@ function Home() {
 
   const handleInputChange = async (e) => {
     await setPollId(e.target.value);
-    // setValidId(true);
   };
 
   return (
     <div>
-      <Button variant="contained" color="primary">
-        <Button fullWidth component={Link} to="/poll">
-          create a poll
-        </Button>
-      </Button>
-      {/* <Link to="/poll" className={styles.btn}>
-        create a poll
-      </Link> */}
-      <form onSubmit={handleFindPoll}>
-        <h4 className="link-btn">Enter Voting Code</h4>
-        <input
+      <form onSubmit={handleFindPoll} className={style.form}>
+        {/* <h4 className="link-btn">Enter Voting Code</h4> */}
+        <TextField
+          inputProps={{
+            style: { textAlign: "center", color: "#3f51b5" },
+          }}
+          fullWidth
           type="text"
           value={pollId}
           onChange={handleInputChange}
-          placeholder="enter code"
-        ></input>
+          label="Enter Poll Code"
+          spellCheck="false"
+        />
         <h5>{!validId && "sorry, not a valid poll id"}</h5>
-        <input type="submit" className={styles.btn}></input>
+        <Button fullWidth variant="contained" color="primary" type="submit">
+          Find Poll
+        </Button>
       </form>
+
+      <Button
+        fullWidth
+        variant="outlined"
+        color="primary"
+        component={Link}
+        to="/poll"
+      >
+        create your own poll
+      </Button>
+      {/* </Button> */}
     </div>
   );
 }

@@ -9,7 +9,7 @@ ul {
 
   .listNumber {
     background-color: rgb(175, 175, 175);
-    padding: 20px 25px;
+    padding: 0 25px;
     font-size: larger;
     box-sizing: border-box;
     border-bottom: rgb(228, 228, 228) solid 1px;
@@ -17,6 +17,7 @@ ul {
 }
 
 .draggable {
+  padding: 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;

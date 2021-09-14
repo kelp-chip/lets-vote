@@ -4,9 +4,22 @@ html {
 }
 
 main {
-  width: 30%;
+  width: 450px;
   margin: 20px auto;
+  margin-top: 7%;
   text-align: center;
+  // @media (max-width: 1200px) {
+  //   // width: 35%;
+  //   margin-top: 20%;
+  // }
+  @media (max-width: 1024px) {
+    width: 80%;
+    margin-top: 10%;
+  }
+  @media (max-width: 480px) {
+    width: 85%;
+    margin-top: 20%;
+  }
 }
 
 // input[type="text"] {
@@ -17,3 +30,33 @@ main {
 //   border: none;
 //   border-bottom: 1px black solid;
 // }
+
+form {
+  margin-bottom: 10px;
+}
+
+h1 {
+  color: #27347a;
+  font-size: 60px;
+  // background-image: linear-gradient(60deg, #6875c3, #33277a);
+  background-image: linear-gradient(
+    80deg,
+    #3f51b5,
+    rgb(117, 123, 207),
+    rgb(93, 165, 199),
+    rgb(75, 189, 164),
+    // rgb(149, 252, 140)
+  );
+  // background: -webkit-linear-gradient(#27347a, #4c5dbb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  border-top: 1px gray solid;
+  color: #30409c;
+}
+
+.logo {
+  text-decoration: none;
+}
